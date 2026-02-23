@@ -1,0 +1,17 @@
+{
+  "frontend/src/App.tsx": "Main application component that sets up TanStack Router with single home route, wrapped in QueryClient, InternetIdentityProvider, and AnalysisProvider contexts.",
+  "frontend/src/components/Layout.tsx": "Layout wrapper component providing consistent header with Biblical Lens branding, main content area with Outlet, and footer with attribution.",
+  "frontend/src/pages/HomePage.tsx": "Home page component with textarea for video description input, API key configuration, analyze button, and inline results display section showing rating circle, explanation card, Bible verse, and \"Try Another\" button that clears all state.",
+  "frontend/src/pages/ResultsPage.tsx": "Results page displaying Biblical analysis retrieved from context, with color-coded rating circle, explanation text, and Bible verse reference.",
+  "frontend/src/components/RatingCircle.tsx": "Reusable component rendering a large colored circle with icon indicating green/yellow/red Biblical alignment rating.",
+  "frontend/src/components/BibleVerse.tsx": "Component displaying Bible verse text with reference in a styled blockquote format with NIV attribution.",
+  "frontend/src/components/ApiKeyInput.tsx": "Component for entering, saving, and managing Anthropic API key with localStorage persistence and security notes.",
+  "frontend/src/hooks/useApiKey.ts": "Custom hook managing API key state and localStorage operations for persisting user's Anthropic API key.",
+  "frontend/src/services/claudeApi.ts": "Service module handling Claude API integration, sending analysis requests and parsing structured JSON responses.",
+  "frontend/src/types/analysis.ts": "TypeScript type definitions for the AnalysisResult structure returned by Claude API.",
+  "frontend/src/main.tsx": "Application entry point with QueryClient, InternetIdentityProvider, and Sonner toast notifications setup.",
+  "frontend/src/index.css": "Global styles with OKLCH color system featuring warm, faith-inspired palette with custom rating colors for green/yellow/red indicators.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom rating colors, Inter font family, and design tokens matching the Biblical theme.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as this application uses direct Claude API calls instead of backend queries.",
+  "frontend/src/contexts/AnalysisContext.tsx": "React context provider managing analysis results and video description state, allowing data sharing between HomePage and ResultsPage components."
+}

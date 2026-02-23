@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Biblical Lens - A web app that analyzes video descriptions using AI to provide biblical perspective ratings (green/yellow/red), explanations, and relevant Bible verses",
+  "architectural_notes": [
+    "Results display on same page, sliding down below 'Analyze Content' button",
+    "AI (Claude) provides full Bible verse text in JSON response - no separate Bible API",
+    "Results section includes: colored circle (green/yellow/red), explanation card, Bible verse box, 'Try Another' button",
+    "'Try Another' button completely clears input field and results for fresh start"
+  ],
+  "known_issues": [],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-fix-the-bug-where-analysis-results-are-not-displaying-after-the-api-call-completes-ensure-that-after-clicking-analyze-content-the-application-properly-captures-and-displays-the-response-from-the-claude-api-call",
+      "title": "Fix the bug where analysis results are not displaying after the API call completes. Ensure that after clicking 'Analyze Content', the application properly captures and displays the response from the Claude API call.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-the-results-section-on-the-same-page-below-the-analyze-content-button-the-results-should-slide-down-smoothly-when-analysis-completes-without-requiring-navigation-to-a-separate-page",
+      "title": "Display the results section on the same page below the 'Analyze Content' button. The results should slide down smoothly when analysis completes, without requiring navigation to a separate page.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-large-colored-circle-at-the-top-of-the-results-section-the-circle-should-be-green-yellow-or-red-based-on-the-rating-from-the-analysis-response",
+      "title": "Display a large colored circle at the top of the results section. The circle should be green, yellow, or red based on the rating from the analysis response.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-the-explanation-text-in-a-card-below-the-colored-circle-the-explanation-should-be-clearly-readable-and-well-formatted",
+      "title": "Display the explanation text in a card below the colored circle. The explanation should be clearly readable and well-formatted.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-the-bible-verse-reference-and-full-verse-text-in-a-highlighted-box-below-the-explanation-card-the-full-verse-text-should-come-from-the-claude-api-response-not-from-a-separate-bible-api",
+      "title": "Display the Bible verse reference and full verse text in a highlighted box below the explanation card. The full verse text should come from the Claude API response, not from a separate Bible API.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-try-another-button-below-the-results-section-when-clicked-this-button-should-completely-clear-both-the-input-field-and-all-displayed-results-giving-users-a-fresh-start-for-a-new-analysis",
+      "title": "Add a 'Try Another' button below the results section. When clicked, this button should completely clear both the input field and all displayed results, giving users a fresh start for a new analysis.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [],
+  "gameProjectType": "none",
+  "projectName": "Biblical Lens",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

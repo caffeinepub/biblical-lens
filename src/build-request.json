@@ -1,0 +1,139 @@
+{
+  "kind": "build_request",
+  "title": "Fix results display bug and implement results section on same page",
+  "projectName": "Biblical Lens",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Fix the bug where analysis results are not displaying after the API call completes. Ensure that after clicking 'Analyze Content', the application properly captures and displays the response from the Claude API call.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "The app is analyzing but not showing results. After clicking \"Analyze Content\", it processes but then returns to the same screen without displaying the color rating, explanation, or Bible verse.",
+          "Fix the bug where results aren't displaying after API call completes."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Analysis results are successfully captured from the Claude API response",
+        "Results are properly stored and made available for display",
+        "No console errors occur during the analysis process"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Display the results section on the same page below the 'Analyze Content' button. The results should slide down smoothly when analysis completes, without requiring navigation to a separate page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-10"
+        ],
+        "quotes": [
+          "Results Layout: Show results on the same page, sliding down below the \"Analyze Content\" button. This keeps everything in one view without navigation."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Results appear on the HomePage below the 'Analyze Content' button",
+        "Results slide down with a smooth animation when ready",
+        "No page navigation occurs when displaying results"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Display a large colored circle at the top of the results section. The circle should be green, yellow, or red based on the rating from the analysis response.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "A large colored circle (green, yellow, or red) at the top"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A prominent colored circle appears at the top of the results",
+        "Circle color matches the rating: green for positive alignment, yellow for neutral/mixed, red for concerning content",
+        "Circle is visually distinct and sized appropriately to draw attention"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Display the explanation text in a card below the colored circle. The explanation should be clearly readable and well-formatted.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "The explanation text in a card below it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Explanation text appears in a styled card component",
+        "Text is clearly readable with appropriate spacing and typography",
+        "Card is positioned directly below the colored circle"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Display the Bible verse reference and full verse text in a highlighted box below the explanation card. The full verse text should come from the Claude API response, not from a separate Bible API.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8",
+          "msg-10"
+        ],
+        "quotes": [
+          "The Bible verse reference and full verse text in a highlighted box",
+          "Bible Verse Source: The AI analysis should include the full verse text in its response. Don't use a separate Bible API - Claude already knows Bible verses and will include them in the JSON response we configured earlier."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Bible verse reference is clearly displayed",
+        "Full verse text is shown in a highlighted or styled box",
+        "Verse text comes from the Claude API response JSON",
+        "The box is visually distinct from other content sections"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add a 'Try Another' button below the results section. When clicked, this button should completely clear both the input field and all displayed results, giving users a fresh start for a new analysis.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8",
+          "msg-10"
+        ],
+        "quotes": [
+          "A \"Try Another\" button to clear and analyze again",
+          "\"Try Another\" Action: Completely clear both the input field and results. Give users a fresh start for a new analysis."
+        ]
+      },
+      "acceptanceCriteria": [
+        "'Try Another' button is visible below the results section",
+        "Clicking the button clears the video description input field",
+        "Clicking the button removes all displayed results",
+        "After clicking, the interface returns to the initial state ready for new input"
+      ]
+    }
+  ],
+  "constraints": [
+    "Results must appear on the same page (HomePage), not navigate to a separate results page",
+    "Bible verse text must come from the Claude API response, not from a separate Bible API",
+    "Do not modify backend/main.mo as it remains a placeholder",
+    "Do not modify immutable frontend paths: useInternetIdentity.ts, useInternetIdentity.tsx, useActor.ts, main.tsx, and frontend/src/components/ui/*"
+  ],
+  "nonGoals": [
+    "Creating a separate results page or navigation flow",
+    "Integrating with external Bible APIs (Bible Gateway, ESV API, etc.)",
+    "Keeping previous input visible when clicking 'Try Another'",
+    "Adding history or saved analyses features"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

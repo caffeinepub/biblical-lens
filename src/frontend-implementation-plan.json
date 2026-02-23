@@ -1,0 +1,120 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix results display bug and implement results section on same page",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Fix the bug where analysis results are not displaying after the API call completes",
+      "acceptanceCriteria": [
+        "Analysis results are successfully captured from the Claude API response",
+        "Results are properly stored and made available for display",
+        "No console errors occur during the analysis process"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Fix the analysis result handling to properly capture and store the Claude API response. Update the handleAnalyze function to correctly process the API response and store it in local state instead of attempting to navigate. Add error handling to catch and display any issues during the API call."
+        },
+        {
+          "path": "frontend/src/contexts/AnalysisContext.tsx",
+          "operation": "modify",
+          "description": "Update the context to support storing results without requiring navigation. Ensure the setAnalysisResult function properly updates the shared state so results can be displayed on the same page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Display the results section on the same page below the 'Analyze Content' button with smooth slide-down animation",
+      "acceptanceCriteria": [
+        "Results appear on the HomePage below the 'Analyze Content' button",
+        "Results slide down with a smooth animation when ready",
+        "No page navigation occurs when displaying results"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add a results display section directly in HomePage that conditionally renders when analysis results are available. Position this section below the 'Analyze Content' button. Implement a smooth slide-down animation using CSS transitions or Tailwind animate classes. Remove any navigation logic that redirects to ResultsPage. Ensure the component checks for results in local state or context and renders the results inline."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Display a large colored circle at the top of the results section based on the rating",
+      "acceptanceCriteria": [
+        "A prominent colored circle appears at the top of the results",
+        "Circle color matches the rating: green for positive alignment, yellow for neutral/mixed, red for concerning content",
+        "Circle is visually distinct and sized appropriately to draw attention"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Import and render the RatingCircle component at the top of the inline results section. Pass the rating value from the analysis result to determine the circle color (green/yellow/red). Ensure the circle is prominently sized and visually distinct using appropriate styling classes."
+        },
+        {
+          "path": "frontend/src/components/RatingCircle.tsx",
+          "operation": "modify",
+          "description": "Review and ensure the component properly handles all three rating values (green, yellow, red) with appropriate colors and icons. Adjust sizing if needed to make the circle more prominent for the inline results display. Verify the component accepts the rating prop and renders correctly for all rating types."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Display the explanation text in a card below the colored circle",
+      "acceptanceCriteria": [
+        "Explanation text appears in a styled card component",
+        "Text is clearly readable with appropriate spacing and typography",
+        "Card is positioned directly below the colored circle"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add a Card component from shadcn/ui below the RatingCircle in the inline results section. Display the explanation text from the analysis result inside the card with appropriate typography classes for readability. Ensure proper spacing between the circle and the card, and within the card for text content."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Display the Bible verse reference and full verse text in a highlighted box below the explanation card",
+      "acceptanceCriteria": [
+        "Bible verse reference is clearly displayed",
+        "Full verse text is shown in a highlighted or styled box",
+        "Verse text comes from the Claude API response JSON",
+        "The box is visually distinct from other content sections"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Import and render the BibleVerse component below the explanation card in the inline results section. Pass the verseReference and verseText from the analysis result to the component. Ensure the verse is displayed in a visually distinct highlighted box that stands out from other content sections."
+        },
+        {
+          "path": "frontend/src/components/BibleVerse.tsx",
+          "operation": "modify",
+          "description": "Review and ensure the component properly displays both the verse reference and full verse text. Verify the component provides sufficient visual distinction with appropriate background colors, borders, or shadows to create a highlighted box effect. Confirm the component accepts both verseReference and verseText props."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add a 'Try Another' button below the results section that clears both input and results",
+      "acceptanceCriteria": [
+        "'Try Another' button is visible below the results section",
+        "Clicking the button clears the video description input field",
+        "Clicking the button removes all displayed results",
+        "After clicking, the interface returns to the initial state ready for new input"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add a 'Try Another' button below the inline results section using the Button component from shadcn/ui. Implement a handleTryAnother function that clears the videoDescription state (input field) and sets the analysis results to null or empty. Ensure the button is only visible when results are displayed. After clicking, the page should return to its initial empty state with cleared input and no results visible."
+        }
+      ]
+    }
+  ]
+}
